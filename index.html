@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>polyline test</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+   
+</head>
+<body>
+
+    <form class="open-question">
+        <h1 class="question" id="lostQ1">Would you like to get lost?</h1>
+        <div class="flex-container">
+            <button type="button" class="btn draw-border" id="yes-button">Yes</button>
+            <button type="button" class="btn draw-border" id="no-button">No</button>
+        </div>
+    </form>
+    <section class="on-no-page hidden">
+        <h2  id="on-no">Sorry to hear that, I think you might be lost already. But if I can convince you here is a great book on the subject.</h2>
+        <a href="https://www.brainpickings.org/2014/08/04/field-guide-to-getting-lost-rebecca-solnit/">Field Guide to Getting Lost by Rebecca Solnit</a>
+        <h2> Also a quick article on the subject of Flanuer's who were all about getting lost</h2>
+        <a href="https://en.wikipedia.org/wiki/Fl%C3%A2neur">Flâneur</a>
+        <h2>If you changed your mind just click the yes button and I can help you get lost</h2>
+        <button type="button" class="btn draw-border" id="yes-button-two">Yes</button>
+    </section>
+
+    <div class="container">
+        <button type="button" class="btn draw-border hidden" id="get-lost-button">get lost</button>
+    </div>
+    <div class= "panel hidden" id="right-panel" ></div>
+    <div class = "map hidden" id="map"></div>   
+    <div class="hidden" id="floating-panel">
+        <b>Mode of Travel: </b>
+            <select  id="mode">
+                <option value="DRIVING">Driving</option>
+                <option value="WALKING">Walking</option>
+                <option value="BICYCLING">Bicycling</option>
+                <option value="TRANSIT">Transit</option>
+            </select>
+    </div>
+    
+    
+</body>
+ <script type="text/javascript"
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOHY6JDVR4Rz2K3rengcAB_fiLwEzyiik&libraries=drawing"></script>
+<script src="index.js"></script>
+
+
+
+</html>

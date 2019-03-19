@@ -1,0 +1,74 @@
+/* styling for text */
+h2 {
+    color:grey;
+}
+/* height of map needs to be specified as div defaults at 0% */
+#map {
+    height: 100%;
+  }
+  /* Optional: Makes the sample page fill the window. */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+/* this is simple delete menu styling  */
+.delete-menu {
+    position: absolute;
+    background: white;
+    padding: 3px;
+    color: #666;
+    font-weight: bold;
+    border: 1px solid #999;
+    font-family: sans-serif;
+    font-size: 12px;
+    box-shadow: 1px 3px 3px rgba(0, 0, 0, .3);
+    margin-top: -10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .delete-menu:hover {
+    background: #eee;
+  }
+  .hidden{
+      display: none;
+
+  }
+
+  /* direction panel styling */
+  #right-panel {
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
+
+  #right-panel select, #right-panel input {
+    font-size: 15px;
+  }
+
+  #right-panel select {
+    width: 100%;
+  }
+
+  #right-panel i {
+    font-size: 12px;
+  }
+  #right-panel {
+    height: 100%;
+    float: right;
+    width: 390px;
+    overflow: auto;
+  }
+
+  /* some printable media query */
+  @media print {
+    #map {
+      height: 500px;
+      margin: 0;
+    }
+    #right-panel {
+      float: none;
+      width: auto;
+    }
+  }
