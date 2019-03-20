@@ -1,7 +1,44 @@
 /* styling for text */
-h2 {
+
+p a{
+   
     color:grey;
 }
+body{
+  position: relative;
+  
+}
+.open-question{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+h1{ 
+  text-align: center;
+}
+.on-no-page{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.button-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+ 
+}
+
+
+
+
 /* height of map needs to be specified as div defaults at 0% */
 #map {
     height: 100%;
@@ -13,24 +50,6 @@ h2 {
     padding: 0;
   }
 
-/* this is simple delete menu styling  */
-.delete-menu {
-    position: absolute;
-    background: white;
-    padding: 3px;
-    color: #666;
-    font-weight: bold;
-    border: 1px solid #999;
-    font-family: sans-serif;
-    font-size: 12px;
-    box-shadow: 1px 3px 3px rgba(0, 0, 0, .3);
-    margin-top: -10px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  .delete-menu:hover {
-    background: #eee;
-  }
   .hidden{
       display: none;
 
@@ -57,9 +76,77 @@ h2 {
   #right-panel {
     height: 100%;
     float: right;
-    width: 390px;
+    width: 30%;
     overflow: auto;
   }
+  #floating-panel {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    z-index: 5;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
+  #get-lost-button{
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     height: 10%;
+     width: 12%;
+     z-index: 6;
+
+  }
+/* from restyling example code to restyle default controls */
+  .gm-style .controls {
+    font-size: 28px;  /* this adjusts the size of all the controls */
+
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: 300;
+    height: 1em;
+    margin: 6px;
+    text-align: center;
+    user-select: none;
+    padding: 2px;
+    width: 1em;
+  }
+  .gm-style .controls button {
+    border: 0;
+    background-color: white;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .gm-style .controls button:hover {
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+  .gm-style .controls.zoom-control {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .gm-style .controls.zoom-control button {
+    font: 0.85em Arial;
+    margin: 1px;
+    padding: 0;
+  }
+
+  .gm-style .controls.maptype-control {
+
+    display: none;
+
+  }
+ 
+
 
   /* some printable media query */
   @media print {

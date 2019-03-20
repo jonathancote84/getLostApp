@@ -1,11 +1,12 @@
 // IIFE (Imediately Invoked Function Expression)
 (function () { 
-// var position;
 var map;   
 var randomCoord;
 var pos;
 var directionsService; 
 var directionsDisplay; 
+var infoWindow;
+var drawingManager;
 
 function enterMap(){
     $('#yes-button').on('click', function(){
@@ -34,11 +35,16 @@ function initMap() {
         zoom: 12,
         // mapTypeId 
         mapTypeId: 'terrain',
+        mapTypeControl: false,
+        fullscreenControl: false,
+        streetviewContral: false,
+        //disable default UI false shows default UI this can be set to true later via event listner
+        disableDefaultUI: false,
 
     });
 
     //define infoWindow to say current location at the current location 
-    var infoWindow = new google.maps.InfoWindow;
+    infoWindow = new google.maps.InfoWindow;
 
     // try HTML5 geolocation
     if (navigator.geolocation) {
@@ -57,10 +63,8 @@ function initMap() {
 
             //set center of map to current position
             map.setCenter(pos);
-
             //drawing manager function is called here
             drawingInterface();
-
         }, function(){
             //error handling for geolocation
             handleLocationError(true, infoWindow, map.getCenter());
@@ -69,20 +73,18 @@ function initMap() {
         //error handling for geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     };
-
-
 }
 
 // this will render the drawingManager UI 
 function drawingInterface() {
-    var drawingManager = new google.maps.drawing.DrawingManager({
+    drawingManager = new google.maps.drawing.DrawingManager({
         drawingMode: google.maps.drawing.OverlayType.MARKER,
         drawingControl: true,
         drawingControlOptions: {
           position: google.maps.ControlPosition.TOP_CENTER,
           drawingModes: ['rectangle']
         },
-
+        
        // edit options and styling for rectangle here  
         rectangleOptions: {
             editable: true
@@ -92,32 +94,48 @@ function drawingInterface() {
 
     //render drawing manager and drawings on map
     drawingManager.setMap(map);
-
     //render directions
     directionsDisplay.setMap(map);
-
     //render direction panel 
     directionsDisplay.setPanel(document.getElementById('right-panel'));
+
 
     //event listner for when a rectangle is drawn
     google.maps.event.addListener(drawingManager, 'rectanglecomplete', function (rectangle) {
 
         
-        // rectangle.addListener('bounds_changed', showNewRect); 
+        //hide infowindow at geolocation
+        infoWindow.setMap(null);
 
         // this is just a check to see .getBounds() of that rectangle 
         var maxLat = rectangle.getBounds().getNorthEast().lat();
         var minLat = rectangle.getBounds().getSouthWest().lat();
         var minLng = rectangle.getBounds().getNorthEast().lng();
         var maxLng = rectangle.getBounds().getSouthWest().lng();
-                 
+
+        //when bounds change get new bounds latlng values from api
+        rectangle.addListener('bounds_changed', function(event){
+            maxLat = rectangle.getBounds().getNorthEast().lat();
+            minLat = rectangle.getBounds().getSouthWest().lat();
+            minLng = rectangle.getBounds().getNorthEast().lng();
+            maxLng = rectangle.getBounds().getSouthWest().lng();
+        });  
+
        //toggle visibilty of the get-lost-button
         $('#get-lost-button').toggleClass("hidden", false);
-
+        
         // get-lost button event listner
         $(".container").on("click", '#get-lost-button', function() {
             //lets you know it ran
             console.log(`getLostClick, ran`);
+            
+            //get lost button hidden
+            $('#get-lost-button').toggleClass("hidden");
+
+            //hide rectangle
+            rectangle.setMap(null);
+
+            drawingManager.setMap(null);
             //random number
             var randomNum = Math.random();
             console.log(randomNum);
@@ -132,24 +150,34 @@ function drawingInterface() {
             // combine those random coordinates into usable .LatLng()
             randomCoord = new google.maps.LatLng(randomLat, randomLng);
             
+            //show direction type select
+            $('#floating-panel').toggleClass("hidden", false);
+
             //show the directions panel
             $('#right-panel').toggleClass("hidden", false);  
        
             //call route function 
             calculateAndDisplayRoute(directionsService, directionsDisplay);
+
+            //event listner to change the route mode 
+            document.getElementById('mode').addEventListener('change', function() {
+                //runs new route api call 
+                calculateAndDisplayRoute(directionsService, directionsDisplay);
+              });
         });
-    
     });
- 
 };
 
 //uses googles direction services     
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+    var selectedMode = document.getElementById('mode').value;
     directionsService.route({
+        //center pos via geolocation sevices 
         origin: pos,
+        // random cordinate
         destination: randomCoord,
-        // direction mode needs to be selectable
-        travelMode: 'DRIVING'
+        // direction mode selectable
+        travelMode: google.maps.TravelMode[selectedMode]
     }, function(response, status) {
         if (status === 'OK') {
            
