@@ -2,17 +2,29 @@
 
 p a{
    
-    color:grey;
+    color: #052b30;
 }
+a{
+  text-decoration: none;
+  color: #053b30;
+}
+
 body{
   position: relative;
+  background: url('scaled-4-backsplash.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color:#052b30;
+  font-family: 'Inconsolata', monospace;
   
 }
 .open-question{
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 40%;
+  left: 45%;
+  transform: translate(-40%, -45%);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -74,14 +86,17 @@ h1{
     font-size: 12px;
   }
   #right-panel {
-    height: 100%;
-    float: right;
-    width: 30%;
+    height: 50%;
+    float: top;
+    width: 95%;
     overflow: auto;
+    margin: auto;
   }
+
   #floating-panel {
+    
     position: absolute;
-    top: 15px;
+    bottom: 40%;
     left: 10px;
     z-index: 5;
     background-color: #fff;
@@ -93,15 +108,25 @@ h1{
     line-height: 30px;
     padding-left: 10px;
   }
-  #get-lost-button{
+  .get-lost-button{
      position: absolute;
      top: 50%;
      left: 50%;
      transform: translate(-50%, -50%);
      height: 10%;
-     width: 12%;
-     z-index: 6;
+     width: 20%;
+     
+     z-index: 5;
+     font-family: 'Roboto','sans-serif';
 
+  }
+  .get-lost-again{
+    position: absolute;
+    bottom: 40%;
+    right: 10px;
+    z-index: 5;
+    background-color: ghostwhite;
+    font-family: 'Roboto','sans-serif';
   }
 /* from restyling example code to restyle default controls */
   .gm-style .controls {
@@ -145,8 +170,87 @@ h1{
     display: none;
 
   }
- 
 
+  /* btn css */
+  .draw-border {
+    box-shadow: inset 0 0 0 2px #052b30;
+    color: #052b30;
+    transition: color 0.25s 0.0833333333s;
+    position: relative;
+    padding: .2em;
+  }
+  .draw-border::before, .draw-border::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .draw-border::before {
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+   
+  }
+  .draw-border::after {
+    border-top-width: 4px;
+    border-right-width: 4px;
+  }
+  .draw-border:hover {
+    color: rgb(236, 202, 127);
+  }
+  .draw-border:hover::before, .draw-border:hover::after {
+    border-color: rgb(236, 202, 127);
+    transition: border-color 0s, width 0.25s, height 0.25s;
+    width: 100%;
+    height: 100%;
+  }
+  .draw-border:hover::before {
+    transition-delay: 0s, 0s, 0.25s;
+  }
+  .draw-border:hover::after {
+    transition-delay: 0s, 0.25s, 0s;
+  }
+  
+  .btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1.5;
+    font: 700 1rem 'Roboto Slab', sans-serif;
+    padding: .5em 1em;
+    letter-spacing: 0.05rem;
+  }
+  .btn:focus {
+    outline: 2px  #052b30;
+  }
+
+  @media only screen and (min-width: 420px) {
+    #right-panel {
+      height: 100%;
+      float: right;
+      width: 30%;
+      overflow: auto;
+      /* margin: auto; */
+    }
+    #floating-panel{
+      bottom: 15px;
+    }
+    .get-lost-again{
+      bottom: 15px;
+      left: 45%;
+    }
+
+  }
+  @media only screen and (min-width: 750px){
+    .get-lost-again{
+      bottom: 15px;
+      left: 30%;
+    }
+  }
 
   /* some printable media query */
   @media print {
