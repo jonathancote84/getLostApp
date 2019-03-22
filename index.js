@@ -426,7 +426,7 @@ function drawingInterface() {
             console.log(`getLostClick, ran`);
             
             //get lost button hidden
-            $('#get-lost-button').toggleClass('get-lost-again',false);
+            $('#get-lost-button').toggleClass('get-lost-again',true);
             $('#get-lost-button').removeClass('get-lost-button');
             //hide rectangle
             rectangle.setMap(null);
