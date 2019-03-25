@@ -20,6 +20,24 @@ body{
   font-family: 'Inconsolata', monospace;
   
 }
+.allow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.about{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.about p {
+ margin-left: 10%;
+ margin-right: 10%;
+
+}
+
 .open-question{
   position: absolute;
   top: 40%;
@@ -124,7 +142,15 @@ h1{
     position: absolute;
     bottom: 40%;
     right: 10px;
-    z-index: 5;
+    z-index: 6;
+    background-color: ghostwhite;
+    font-family: 'Roboto','sans-serif';
+  }
+  .tutorial-button{
+    position: absolute;
+    bottom: 45%;
+    right: 10px;
+    z-index: 6;
     background-color: ghostwhite;
     font-family: 'Roboto','sans-serif';
   }
@@ -243,11 +269,19 @@ h1{
       bottom: 15px;
       left: 45%;
     }
+    .tutorial-button{
+      bottom: 38px;
+      left: 45%;
+    }
 
   }
   @media only screen and (min-width: 750px){
     .get-lost-again{
       bottom: 15px;
+      left: 30%;
+    }
+    .tutorial-button{
+      bottom: 38px;
       left: 30%;
     }
   }

@@ -13,8 +13,10 @@
    
 </head>
 <body>
-
-    <section class="open-question">
+    <header class="about allow">
+        <!-- generate html for instructions page here -->
+    </header>
+    <section class="open-question hidden">
         <h1 class="question" id="lostQ1">Would you like to get lost?</h1>
         <div class="button-container">
             <button type="button" class="btn draw-border" id="yes-button">Yes</button>
@@ -29,16 +31,17 @@
                 <li><a href="https://en.wikipedia.org/wiki/Fl%C3%A2neur">Flâneur</a></li>
                 
             </ul>
-        <div class="button-container">
-            <button type="button" class="btn draw-border" id="yes-button-two">get lost</button>
-        </div>       
+        <button type="button" class="btn draw-border" id="yes-button-two">get lost</button> 
     </section>
-    <div class="container">
+    <section class="ui-container">
         <button type="button" class=" hidden get-lost-button" id="get-lost-button">get lost</button>
-    </div>
+    </section>
+    <section class="ui-container">
+        <button type="button" class=" hidden tutorial-button" id="tutorial-button">Tutorial</button>
+    </section>
     <div class= "panel hidden" id="right-panel" ></div>
     <div class = "map hidden" id="map"></div>   
-    <div class="hidden" id="floating-panel">
+    <section class="hidden" id="floating-panel">
         <b>Mode of Travel: </b>
             <select  id="mode">
                 <option value="DRIVING">Driving</option>
@@ -46,7 +49,7 @@
                 <option value="BICYCLING">Bicycling</option>
                 <option value="TRANSIT">Transit</option>
             </select>
-    </div>
+    </section>
     
     
 </body>

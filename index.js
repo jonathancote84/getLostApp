@@ -7,11 +7,63 @@ var directionsService;
 var directionsDisplay; 
 var infoWindow;
 var drawingManager;
+var mapStartCount = 0;
+function aboutMap(){
+    console.log("welcome to my app")
+    initMap();
+    $('.about').append("<p>This app functions on geolocation services. Please allow to move forward. </p>")
+
+}
+function fullMapOff(){
+    $('#map').hide();
+    $('#right-panel').hide();
+    $('#get-lost-button').hide();
+    $('#tutorial-button').hide();
+    $('#floating-panel').hide();
+}
+
+function tutorialNavigation(){
+    fullMapOff()
+    instructionsPage();
+
+}
+
+function getLostButton(){
+        $('#yes-button').on('click', function(){
+            if(mapStartCount>0){
+                $('.about').hide();
+                $('#map').show();
+                $('#right-panel').show();
+                $('#get-lost-button').show();
+                $('#tutorial-button').show();
+                $('#floating-panel').show();
+        }else{
+            $('.about').hide();
+            $('#map').show();
+        }
+    });
+}
+function instructionsPage(){
+    console.log("how you use this"); 
+    $('.about').replaceWith(
+        `<section class='about'>   
+        <img class="gif-left" src="squareExample.gif" alt="example of drawing tool" style="align-self:center">
+        <p>You can use the square drawing tool to select an area to get lost within on the map.</p> 
+        <img class="gif-right" src="squareGetLost.gif" alt="example of the get lost button" style="align-self:center">
+        <p>A button to get lost will apear when you have drawn the area.You can edit the area with the hand tool before clicking the get lost button. After you click on the "get lost" button the directions and route will show.</p>
+        <img class="gif-left" src="squareNewRoute.gif" alt="example of how to use new route" style="align-self:center">
+        <p>The travel mode can be edited with the drop down menu. You can use the small "get lost" button to give you a new random route</p> 
+        <button type="button" class="btn draw-border" id="yes-button" style="align-self:center">get lost</button>
+        </section>`);
+    $('.about').show(); 
+    getLostButton();
+    
+}
 
 function enterMap(){
     $('#yes-button').on('click', function(){
         $('.open-question').hide("slow");
-        $('#map').show("slow");
+        instructionsPage();
     })
     $('#no-button').on('click', function(){
         $('.open-question').hide("slow");
@@ -19,7 +71,8 @@ function enterMap(){
     })
     $('#yes-button-two').on('click', function(){
         $('.on-no-page').hide("slow");
-        $('#map').show("slow");
+        instructionsPage();
+        
     })
     $('#get-lost-again').on('click', function(){
         $('#map').hide('slow');
@@ -346,6 +399,11 @@ function initMap() {
     if (navigator.geolocation) {
         // getCurrentPosition allows you to gather position information from the browser
         navigator.geolocation.getCurrentPosition(function(position){
+
+            // this is the point you can see if geoLocation was allowed
+            console.log("geolocation allowed")
+            $('.about').hide();
+            $('.open-question').show();
             // makes an object to store current position latitude and longitude 
             pos = {
                 lat: position.coords.latitude,
@@ -421,16 +479,22 @@ function drawingInterface() {
         $('#get-lost-button').show("slow");
         
         // get-lost button event listner
-        $(".container").on("click", '#get-lost-button', function() {
+        $(".ui-container").on("click", '#get-lost-button', function() {
+
             //lets you know it ran
-            console.log(`getLostClick, ran`);
+            mapStartCount++;
             
-            //get lost button hidden
+            //get lost button, change sizing and position
             $('#get-lost-button').toggleClass('get-lost-again',true);
             $('#get-lost-button').removeClass('get-lost-button');
+            //manage tutorial button
+            $('#tutorial-button').show();
+            $('.ui-container').on('click','#tutorial-button', function(){
+                tutorialNavigation();
+            })
             //hide rectangle
             rectangle.setMap(null);
-
+            //hide drawingManager
             drawingManager.setMap(null);
             //random number
             var randomNum = Math.random();
@@ -447,10 +511,9 @@ function drawingInterface() {
             randomCoord = new google.maps.LatLng(randomLat, randomLng);
             
             //show direction type select
-
             $('#floating-panel').show("slow");
 
-            //show the directions panel
+
          
             // rightPanelResponsive();
             $('#right-panel').show("slow"); 
@@ -491,5 +554,5 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
 $(enterMap())
 // loads event listner for the page loading 
-google.maps.event.addDomListener(window, 'load', initMap);
+google.maps.event.addDomListener(window, 'load', aboutMap);
 })();
