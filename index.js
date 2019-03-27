@@ -46,14 +46,16 @@ function getLostButton(){
 function instructionsPage(){
     console.log("how you use this"); 
     $('.about').replaceWith(
-        `<section class='about'>   
+        `<section class='about'> 
+        <div class='about-nav'>
+        <button type="button" class="btn draw-border" id="yes-button" style="align-self:center">get lost</button>
+        </div>     
         <img class="gif-left" src="squareExample.gif" alt="example of drawing tool" style="align-self:center">
         <p>You can use the square drawing tool to select an area to get lost within on the map.</p> 
         <img class="gif-right" src="squareGetLost.gif" alt="example of the get lost button" style="align-self:center">
         <p>A button to get lost will apear when you have drawn the area.You can edit the area with the hand tool before clicking the get lost button. After you click on the "get lost" button the directions and route will show.</p>
         <img class="gif-left" src="squareNewRoute.gif" alt="example of how to use new route" style="align-self:center">
-        <p>The travel mode can be edited with the drop down menu. You can use the small "get lost" button to give you a new random route</p> 
-        <button type="button" class="btn draw-border" id="yes-button" style="align-self:center">get lost</button>
+        <p>The travel mode can be edited with the drop down menu. You can use the small "get lost" button to give you a new random route</p>  
         </section>`);
     $('.about').show(); 
     getLostButton();
