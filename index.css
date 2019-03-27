@@ -146,6 +146,7 @@ h1{
      transform: translate(-50%, -50%);
      height: 80px;
      width: 150px;
+     font-size: 1.3rem;
      background-color: ghostwhite;
      box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
      z-index: 5;
@@ -159,6 +160,7 @@ h1{
     z-index: 6;
     width: 80px;
     height: 40px;
+    font-size: 1.1rem;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
     background-color: ghostwhite;
     font-family: 'Roboto','sans-serif';
@@ -170,6 +172,7 @@ h1{
     z-index: 6;
     width: 80px;
     height: 40px;
+    font-size: 1.2rem;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
     background-color: ghostwhite;
     font-family: 'Roboto','sans-serif';
