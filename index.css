@@ -147,7 +147,7 @@ h1{
      height: 80px;
      width: 150px;
      background-color: ghostwhite;
-     
+     box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
      z-index: 5;
      font-family: 'Roboto','sans-serif';
 
@@ -159,6 +159,7 @@ h1{
     z-index: 6;
     width: 80px;
     height: 40px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
     background-color: ghostwhite;
     font-family: 'Roboto','sans-serif';
   }
@@ -169,6 +170,7 @@ h1{
     z-index: 6;
     width: 80px;
     height: 40px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
     background-color: ghostwhite;
     font-family: 'Roboto','sans-serif';
   }
@@ -265,7 +267,7 @@ h1{
     border: none;
     cursor: pointer;
     line-height: 1.5;
-    text-shadow: 2px 2px 10px grey;
+    text-shadow: .5px .5px .5px grey;
     font: 700 1rem 'Roboto Slab', sans-serif;
     padding: .5em 1em;
     letter-spacing: 0.05rem;
