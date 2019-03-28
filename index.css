@@ -35,6 +35,7 @@ body{
   box-shadow: 2px 2px 8px black;
   margin-left: auto;
   margin-right: auto;
+  top: 0;
   height: 45px;
   width: 100%;
 }
@@ -42,12 +43,25 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
+
   justify-content: space-between;
+  
+}
+.about h2{
+  display: flex;
+  font-size: 1.3rem;
 }
 .about p {
  margin-left: 10%;
  margin-right: 10%;
 
+}
+.about-main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
 }
 
 .open-question{
