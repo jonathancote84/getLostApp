@@ -43,9 +43,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  justify-content: space-between;
-  
+  justify-content: space-between;  
 }
 .about h2{
   display: flex;
@@ -63,7 +61,6 @@ body{
   justify-content: space-between;
   margin-top: 50px;
 }
-
 .open-question{
   position: absolute;
   top: 40%;
@@ -92,9 +89,6 @@ h1{
   align-items: center;
  
 }
-
-
-
 
 /* height of map needs to be specified as div defaults at 0% */
 #map {
